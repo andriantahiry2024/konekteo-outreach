@@ -1,0 +1,18 @@
+# Coolify Service Configuration for Konekteo Prospection App
+# Version: 1.0.0
+version: '3.8'
+
+services:
+  konekteo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    labels:
+      - "coolify.managed=true"
+      - "coolify.name=konekteo-prospection-app"
