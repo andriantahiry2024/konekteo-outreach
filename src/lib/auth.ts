@@ -1,5 +1,5 @@
 import { createHash, createHmac, randomBytes, timingSafeEqual } from "crypto";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { q } from "./db";
 
 const secret = process.env.SESSION_SECRET || "dev-secret-do-not-use-in-prod";
@@ -13,6 +13,11 @@ export function hashToken(token: string) {
 
 export function newToken() {
   return randomBytes(24).toString("base64url");
+}
+
+function isHttps() {
+  const proto = (headers().get("x-forwarded-proto") || "").split(",")[0].trim();
+  return proto === "https";
 }
 
 function sign(value: string) {
@@ -50,7 +55,7 @@ export function setSessionCookie(clientId: string) {
   cookies().set(SESSION_COOKIE, createSessionValue(clientId), {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: isHttps(),
     path: "/",
     maxAge: SESSION_DAYS * 86_400,
   });
@@ -64,7 +69,7 @@ export function setAdminCookie() {
   cookies().set(ADMIN_COOKIE, sign("admin"), {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: isHttps(),
     path: "/",
     maxAge: 12 * 3600,
   });
