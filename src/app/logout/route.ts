@@ -5,5 +5,9 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
   clearSessionCookie();
-  return NextResponse.redirect(new URL("/login", req.url));
+  const host =
+    req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? req.nextUrl.host;
+  const proto =
+    req.headers.get("x-forwarded-proto") ?? req.nextUrl.protocol.replace(":", "") ?? "https";
+  return NextResponse.redirect(`${proto}://${host}/login`);
 }
