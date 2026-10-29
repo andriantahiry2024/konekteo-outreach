@@ -14,11 +14,13 @@ export const SenderInboxes: React.FC<SenderInboxesProps> = ({ inboxes }) => {
         <div>
           <div className="flex items-center space-x-2">
             <h3 className="text-base font-bold text-white tracking-tight">
-              Les 3 adresses d&apos;expédition sécurisées
+              {inboxes.length > 1
+                ? `Vos ${inboxes.length} adresses d'expédition sécurisées`
+                : "Votre adresse d'expédition sécurisée"}
             </h3>
             <span className="text-[11px] font-semibold bg-[#10b981]/15 text-[#10b981] px-2.5 py-0.5 rounded-full flex items-center space-x-1 border border-[#10b981]/30">
               <CheckCircle2 className="w-3.5 h-3.5 inline mr-1" />
-              100% en boîte principale
+              Domaine client protégé
             </span>
           </div>
           <p className="text-xs text-gray-400 mt-1">

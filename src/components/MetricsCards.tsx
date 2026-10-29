@@ -30,7 +30,7 @@ export const MetricsCards: React.FC<MetricsCardsProps> = ({ metrics }) => {
         </div>
         <p className="text-xs text-gray-400 mt-2 flex items-center">
           <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block mr-1.5" />
-          Rythme naturel sécurisé (35 max / boîte)
+          Plafond d&apos;envoi réparti sur vos boîtes
         </p>
       </div>
 
@@ -53,7 +53,7 @@ export const MetricsCards: React.FC<MetricsCardsProps> = ({ metrics }) => {
           </span>
         </div>
         <p className="text-xs text-gray-400 mt-2">
-          Délivrabilité boîte principale garantie (0 spam)
+          Taux d&apos;ouverture mesuré sur 30 jours
         </p>
       </div>
 

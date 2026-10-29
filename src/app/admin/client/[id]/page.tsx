@@ -25,7 +25,8 @@ export default async function ClientConsole({
     [params.id]
   );
 
-  const host = headers().get("host") || "localhost:3000";
+  const host =
+    headers().get("x-forwarded-host") || headers().get("host") || "localhost:3000";
   const proto = headers().get("x-forwarded-proto") || "http";
   const linkUrl = searchParams.link ? `${proto}://${host}/s/${searchParams.link}` : null;
 

@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center space-x-2">
               <span className="font-extrabold text-white text-lg tracking-tight">KONEKTEO</span>
               <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-[#18181b] text-[#e9ff3b] border border-[#e9ff3b]/30">
-                100% Autonome
+                Piloté par Konekteo
               </span>
             </div>
             <p className="text-xs text-gray-400">Prospection commerciale sans friction technique</p>
